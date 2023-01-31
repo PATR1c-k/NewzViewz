@@ -7,9 +7,9 @@ export default class NewsItem extends Component {
         const { title, description, imageURL, newsURL } = this.props;
 
         return (
-            <div>
-                <div className="card" style={{ width: "18rem" }}>
-                    <img src={imageURL} className="card-img-top" alt="..." style={{ height: "100%" }} />
+            <div className='my-2'>
+                <div className="card">
+                    <img src={imageURL} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{title}...</h5>
                         <p className="card-text">{description}...</p>
