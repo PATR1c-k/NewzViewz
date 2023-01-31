@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
 import News from './News'
+// import Spinner from './Spinner'
 
 
 export default class App extends Component {
@@ -9,7 +10,8 @@ export default class App extends Component {
             <div>
                 {/* <h1>Hello Class based component {this.c}</h1> */}
                 <Navbar />
-                <News />
+                {/* <Spinner /> */}
+                <News pageSize="20" />
             </div>
         )
     }
