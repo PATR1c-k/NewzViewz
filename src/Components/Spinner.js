@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import "./Spinner.css"
+import loading from '../Hourglass.gif'
 
 export default class Spinner extends Component {
     render() {
         return (
-            <div>
-                <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div className='position-absolute top-50 start-50'>
+                <img src={loading} alt='Loading spinner' />
             </div>
         )
     }
