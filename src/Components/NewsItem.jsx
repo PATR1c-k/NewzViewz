@@ -4,16 +4,20 @@ import React, { Component } from 'react'
 
 export default class NewsItem extends Component {
     render() {
-        const { title, description, imageURL, newsURL, author, date } = this.props;
+        const { title, description, imageURL, newsURL, author, date, source } = this.props;
 
 
 
         return (
             <div className='my-2'>
                 <div className="card h-100">
+                    <span class="position-absolute top-0 start-50 translate-middle badge bg-danger" style={{ zIndex: "3" }}>
+                        {source.name}
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
                     <img src={imageURL} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
+                        <h5 className="card-title">{title} </h5>
                         <p className="card-text">{description}</p>
                         <a rel="noreferrer" href={newsURL} target="_blank" className="btn btn-sm btn-dark">Read More</a>
                     </div>
@@ -30,3 +34,7 @@ export default class NewsItem extends Component {
     }
 }
 
+{/* <button type="button" class="btn btn-primary position-relative">
+    Inbox
+
+</button> */}

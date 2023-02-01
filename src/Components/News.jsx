@@ -86,7 +86,7 @@ export default class News extends Component {
                         const d = new Date(element.publishedAt);
                         return (
                             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 my-2" key={element.url}>
-                                <NewsItem title={element.title} description={element.description} newsURL={element.url} imageURL={element.urlToImage} date={d.toUTCString()} author={element.author} />
+                                <NewsItem title={element.title} description={element.description} newsURL={element.url} imageURL={element.urlToImage} date={d.toUTCString()} author={element.author} source={element.source} />
                             </div>
                         );
                     })}
