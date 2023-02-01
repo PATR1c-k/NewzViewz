@@ -28,7 +28,7 @@ export default class News extends Component {
     }
 
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=29d910e6039445aab5463ebbe81c18eb&pagesize=${this.props.pagesize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=${process.env.REACT_APP_API_KEY}&pagesize=${this.props.pagesize}`;
         this.setState({ loading: true });
         let data = await fetch(url)
         let parsedData = await data.json();
@@ -40,7 +40,7 @@ export default class News extends Component {
     handlePrevClick = async () => {
 
         console.log("Previous clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=29d910e6039445aab5463ebbe81c18eb&page=${this.state.page - 1}&pagesize=${this.props.pagesize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=${process.env.REACT_APP_API_KEY}&page=${this.state.page - 1}&pagesize=${this.props.pagesize}`;
         this.setState({ loading: true });
         let data = await fetch(url)
         let parsedData = await data.json();
@@ -58,7 +58,7 @@ export default class News extends Component {
     handleNextClick = async () => {
 
         console.log("Next cliked");
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=29d910e6039445aab5463ebbe81c18eb&page=${this.state.page + 1}&pagesize=${this.props.pagesize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=${process.env.REACT_APP_API_KEY}&page=${this.state.page + 1}&pagesize=${this.props.pagesize}`;
         this.setState({ loading: true });
         let data = await fetch(url)
         let parsedData = await data.json();
@@ -72,6 +72,7 @@ export default class News extends Component {
         )
     }
 
+
     render() {
         return (
             <div className='container my-3'>
@@ -82,9 +83,10 @@ export default class News extends Component {
 
                 <div className="row my-3">
                     {!this.state.loading && this.state.articles?.map((element) => {
+                        const d = new Date(element.publishedAt);
                         return (
-                            <div className="col-lg-3 col-md-4 col-sm-6 my-2" key={element.url}>
-                                <NewsItem title={element.title} description={element.description} newsURL={element.url} imageURL={element.urlToImage} />
+                            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 my-2" key={element.url}>
+                                <NewsItem title={element.title} description={element.description} newsURL={element.url} imageURL={element.urlToImage} date={d.toUTCString()} author={element.author} />
                             </div>
                         );
                     })}
@@ -98,5 +100,3 @@ export default class News extends Component {
         )
     }
 }
-
-// https://newsapi.org/v2/top-heading?q=mumbai&from=2023-01-25&sortBy=publishedAt&category=${this.props.category}&apiKey=29d910e6039445aab5463ebbe81c18eb&pagesize=12
