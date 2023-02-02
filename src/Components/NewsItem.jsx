@@ -15,7 +15,7 @@ export default class NewsItem extends Component {
                         {source.name}
                         <span className="visually-hidden">unread messages</span>
                     </span>
-                    <img src={imageURL} className="card-img-top" alt="..." />
+                    <img src={!imageURL ? "https://images.unsplash.com/photo-1534294668821-28a3054f4256?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5rbm93bnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" : imageURL} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{title} </h5>
                         <p className="card-text">{description}</p>
