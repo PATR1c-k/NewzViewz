@@ -16,7 +16,6 @@ function News(props) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    document.title = `${capitalizeFirstLetter(props.category)} | NewzViewz`;
 
     const componentDidMount = async () => {
         props.setProgress(10);
@@ -48,6 +47,7 @@ function News(props) {
     };
 
     useEffect(() => {
+        document.title = `${capitalizeFirstLetter(props.category)} | NewzViewz`;
         componentDidMount();
     }, [])
 
@@ -55,9 +55,9 @@ function News(props) {
     return (
         <div className='container my-3'>
             {/* Adding loading spinner */}
-            <h2 className='text-center'>NewzViewz - Top  <strong>{capitalizeFirstLetter(props.category)}</strong> headlines</h2>
+            <h2 className='text-center' style={{ marginTop: "90px" }}>NewzViewz - Top  <strong>{capitalizeFirstLetter(props.category)}</strong> headlines</h2>
 
-            {/* {{ loading } && <Spinner />} */}
+            {loading && <Spinner />}
             <InfiniteScroll
                 dataLength={articles.length}
                 next={fetchMoreData}
@@ -92,8 +92,8 @@ News.defaultProps = {
 }
 
 News.propTypes = {
-    country: PropTypes.String,
-    pagesize: PropTypes.Number,
+    country: PropTypes.string,
+    pagesize: PropTypes.number,
     category: PropTypes.string
 }
 
