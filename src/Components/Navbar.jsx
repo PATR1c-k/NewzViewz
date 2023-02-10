@@ -1,7 +1,13 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
+    let location = useLocation();
+
+    React.useEffect(() => {
+        // Google Analytics
+        console.log(location.pathname);
+    }, [location]);
 
     return (
         <div>
@@ -13,13 +19,13 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item"><Link className="nav-link active" aria-current="page" to="/">Home</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="business">business</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="entertainment">entertainment</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="health">health</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="science">science</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="sports">sports</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="technology">technology</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">Home</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/business" ? "active" : ""}`} to="business">business</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/entertainment" ? "active" : ""}`} to="entertainment">entertainment</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/health" ? "active" : ""}`} to="health">health</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/science" ? "active" : ""}`} to="science">science</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/sports" ? "active" : ""}`} to="sports">sports</Link></li>
+                            <li className="nav-item"><Link className={`nav-link ${location.pathname === "/technology" ? "active" : ""}`} to="technology">technology</Link></li>
                         </ul>
                     </div>
                 </div>
