@@ -1,3 +1,9 @@
+# Before starting project look for dates in URL, 
+
+As I was using free version of NewsAPI, Project can show only new upto last 30 days. 
+so If todays date is 2024-05-03 the set URL dates to 2024-04-03(30 days backdated.)
+You will find this changes at (src/components/News.jsx)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
